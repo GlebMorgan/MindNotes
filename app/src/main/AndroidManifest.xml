@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gleb.mindnotes" >
+
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_book_open_page_variant_black_48dp"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <activity
+            android:name=".NotesListActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:name=".NoteActivity"
+            android:label="@string/title_activity_note" >
+        </activity>
+
+        <receiver
+            android:name=".NotificationAlarmReceiver"
+            android:exported="true"
+            android:enabled="true"
+            android:process=":remote"/>
+
+        <service
+            android:name=".AlarmService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
